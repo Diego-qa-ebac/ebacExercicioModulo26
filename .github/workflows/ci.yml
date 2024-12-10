@@ -1,4 +1,4 @@
-name: EBAC
+name: Ebac CI
 
 on: 
   push:
@@ -9,6 +9,8 @@ on:
 jobs:
 
   test:
+
+    runs-on: ubuntu-latest
 
     steps:
 
