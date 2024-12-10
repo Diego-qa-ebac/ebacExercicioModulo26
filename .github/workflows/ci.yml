@@ -1,30 +1,23 @@
 name: Ebac CI
 
-on: 
+on:
   push:
     branches: [ ci ]
 
-  workflow_dispatch:
-
 jobs:
-
   test:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest  # Aqui você define em qual sistema o job será executado
     steps:
-
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 18
       - name: Cypress run
         uses: cypress-io/github-action@v6.7.8
-        continue-on-error: true
         with:
           install-command: npm install
           browser: chrome
-      - name: Publish report 
+      - name: Publish report
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
